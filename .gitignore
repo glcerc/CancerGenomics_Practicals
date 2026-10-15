@@ -1,0 +1,22 @@
+# Original course materials
+course_materials/
+
+# Large sequencing files
+*.bam
+*.bai
+*.cram
+*.fastq
+*.fastq.gz
+
+# Python
+__pycache__/
+.venv/
+.ipynb_checkpoints/
+
+# Temporary HPC files
+slurm-*.out
+*.tmp
+
+# Large intermediate results
+results/bam_qc/depth.txt
+results/bam_qc/bam_stats.txt
