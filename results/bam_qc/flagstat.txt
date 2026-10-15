@@ -1,0 +1,16 @@
+511065 + 61666 in total (QC-passed reads + QC-failed reads)
+511065 + 61666 primary
+0 + 0 secondary
+0 + 0 supplementary
+24419 + 5715 duplicates
+24419 + 5715 primary duplicates
+505987 + 59099 mapped (99.01% : 95.84%)
+505987 + 59099 primary mapped (99.01% : 95.84%)
+511065 + 61666 paired in sequencing
+255511 + 30838 read1
+255554 + 30828 read2
+498556 + 55871 properly paired (97.55% : 90.60%)
+500909 + 56531 with itself and mate mapped
+5078 + 2568 singletons (0.99% : 4.16%)
+2321 + 651 with mate mapped to a different chr
+1905 + 366 with mate mapped to a different chr (mapQ>=5)
