@@ -32,3 +32,5 @@ results/bam_qc/bam_header.txt
 # Temporary exercise extraction files
 exercise_checklist.txt
 exercise_details.txt
+
+/obsolete_scripts/
