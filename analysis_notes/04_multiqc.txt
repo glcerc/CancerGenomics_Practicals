@@ -1,0 +1,20 @@
+MULTIQC — AGGREGATED QUALITY CONTROL
+=====================================
+
+Tool: MultiQC 1.11
+SLURM job: 19671677
+Status: COMPLETED
+Runtime: 00:00:15
+Exit code: 0:0
+
+Input:
+- FastQC reports for normal R1/R2
+- FastQC reports for tumor R1/R2
+- FastP reports for normal and tumor
+
+Output:
+results/multiqc/multiqc_report.html
+
+Notes:
+The MultiQC HTML report was generated successfully.
+Detailed report inspection is pending.

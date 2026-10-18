@@ -11,6 +11,7 @@
 set -euo pipefail
 
 module load GATK/4.2.6.1-GCCcore-10.3.0-Java-11
+module load R/4.1.0-foss-2021a
 
 PROJECT="/data/users/gercan/CancerGenomics_Practicals"
 REF="/data/courses/cancergenomics/VAR_CALLING/bwa_idx/genome.fa"
