@@ -1,0 +1,40 @@
+Exercise 01 — FastQC
+====================
+
+Tool: FastQC 0.11.9
+
+Input:
+- normal.R1.fq.gz
+- normal.R2.fq.gz
+- tumor.R1.fq.gz
+- tumor.R2.fq.gz
+
+SLURM jobs:
+- Normal: 19671323 — COMPLETED (00:06:01)
+- Tumor: 19671324 — COMPLETED (00:08:40)
+
+RESULTS
+-------
+All four FASTQ files:
+- 9 PASS modules
+- 2 WARN modules
+- 0 FAIL modules
+
+WARNINGS
+--------
+1. Per sequence GC content:
+   GC distribution deviates from FastQC's expected
+   distribution. This may relate to library or
+   target-region characteristics.
+
+2. Sequence Length Distribution:
+   Variable sequence lengths triggered a warning.
+
+INTERPRETATION
+--------------
+All four FASTQ files passed the per-base sequence
+quality and adapter content assessments.
+
+The warnings do not necessarily indicate poor
+sequencing quality. Their causes require further
+inspection of the FastQC reports.
