@@ -20,3 +20,15 @@ slurm-*.out
 # Large intermediate results
 results/bam_qc/depth.txt
 results/bam_qc/bam_stats.txt
+
+# SLURM logs
+logs/
+
+# Large and temporary analysis outputs
+results/fastqc/
+results/fastp/
+results/bam_qc/bam_header.txt
+
+# Temporary exercise extraction files
+exercise_checklist.txt
+exercise_details.txt
