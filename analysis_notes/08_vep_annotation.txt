@@ -1,0 +1,45 @@
+ENSEMBL VARIANT EFFECT PREDICTOR
+================================
+
+Tool: Ensembl VEP 116.3
+SLURM job: 20016603
+Status: COMPLETED
+Runtime: 00:36:51
+
+INPUT
+-----
+results/variants/somatic.filtered.PASS.vcf.gz
+133 PASS variants
+Reference assembly: GRCh38
+
+METHOD
+------
+VEP online Ensembl database
+VCF output format
+
+Annotations requested:
+- Gene symbols
+- Consequences and impact categories
+- Canonical transcript flags
+- HGVS notation
+- Variant classes
+- SIFT and PolyPhen predictions
+
+RESULTS
+-------
+Output: results/annotation/vep_annotated.vcf
+Output VCF records: 133
+CSQ annotation field: present
+
+Example:
+chr6:325357 G>A
+Gene: DUSP22
+Consequence: intron_variant
+Impact: MODIFIER
+
+LIMITATIONS
+-----------
+ClinVar, REVEL, and AlphaMissense annotations
+have not yet been integrated.
+The number of annotated transcript consequences
+may exceed the number of VCF records.

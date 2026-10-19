@@ -34,3 +34,18 @@ exercise_checklist.txt
 exercise_details.txt
 
 /obsolete_scripts/
+
+# Local environments and package caches
+/conda_envs/
+/conda_pkgs/
+/mamba_root/
+/tools/
+
+# Reference genomes and generated analysis results
+/references/
+/results/
+
+# Runtime logs and Python caches
+/logs/
+__pycache__/
+*.pyc

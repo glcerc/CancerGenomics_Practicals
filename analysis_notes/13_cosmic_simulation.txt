@@ -1,0 +1,48 @@
+CANCER GENOMICS - COSMIC MUTATIONAL SIGNATURE SIMULATION
+========================================================
+
+Reference genome: GRCh37 / hg19
+Genomic regions: chr12 exons from GENCODE hg19 annotation
+Signature database: COSMIC v3.2
+Signatures simulated: SBS1 and SBS7c
+Inference software: MutationalPatterns 3.12.0
+
+SIMULATION RESULTS
+------------------
+Experiment          Target SBS1    Generated SBS1    Inferred SBS1    Absolute error
+100 SNVs, 70:30     70%            71.0%             66.53%           4.47 percentage points
+500 SNVs, 70:30     70%            71.4%             72.22%           0.82 percentage points
+1000 SNVs, 70:30    70%            71.0%             70.51%           0.49 percentage points
+500 SNVs, 50:50     50%            49.0%             48.84%           0.16 percentage points
+
+INTERPRETATION
+--------------
+The simulation evaluated the recovery of known COSMIC SBS1 and SBS7c
+signature mixtures using different mutation counts and mixture ratios.
+
+For the 70:30 experiments, inference error decreased as the number
+of mutations increased from 100 to 1000.
+
+The 500-mutation 50:50 mixture was also recovered accurately.
+
+These experiments suggest that mutation count can influence
+signature inference accuracy. However, only one random realization
+was analyzed per condition, so the results are not sufficient to
+establish a general statistical relationship.
+
+The evaluation fitted only the two generating signatures.
+Consequently, this is a controlled signature recovery experiment
+rather than an assessment of performance against all COSMIC signatures.
+
+OUTPUTS
+-------
+results/mutational_signatures/simulation/
+  n100_mix70_30.vcf
+  n500_mix70_30.vcf
+  n1000_mix70_30.vcf
+  n500_mix50_50.vcf
+  simulation_truth.tsv
+  simulation_sbs96_matrix.tsv
+  simulation_comparison.tsv
+
+STATUS: Simulation and inference completed.
