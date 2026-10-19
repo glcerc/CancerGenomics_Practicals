@@ -1,0 +1,115 @@
+CANCER GENOMICS - COSMIC MUTATIONAL SIGNATURE ANALYSIS
+======================================================
+
+Analysis date: 2026-10-19
+Reference genome: GRCh37 / hg19
+Signature database: COSMIC v3.2
+Software: MutationalPatterns 3.12.0
+Method: fit_to_signatures()
+Samples: 9
+Total SNVs analyzed: 1359
+SBS96 matrix: 96 mutation channels x 9 samples
+
+INPUT AND OUTPUT FILES
+----------------------
+Input:
+results/mutational_signatures/sbs96_matrix.tsv
+
+Outputs:
+results/mutational_signatures/cosmic/cosmic_contributions.tsv
+results/mutational_signatures/cosmic/cosmic_relative_contributions.tsv
+results/mutational_signatures/cosmic/cosmic_reconstructed.tsv
+results/mutational_signatures/cosmic/cosmic_fit_qc.tsv
+
+RESULTS
+-------
+Sample     SNVs   Cosine similarity   Top three signatures (estimated exposures)
+
+sample_01  145    0.9694              SBS15: 76.65; SBS1: 19.32; SBS87: 16.49
+sample_02  240    0.9811              SBS7b: 136.21; SBS7a: 66.81; SBS7d: 10.14
+sample_03  329    0.9923              SBS7a: 147.36; SBS7b: 96.86; SBS31: 31.85
+sample_04  121    0.8825              SBS4: 62.49; SBS42: 11.46; SBS24: 10.77
+sample_05  244    0.9881              SBS7b: 113.33; SBS7a: 92.03; SBS87: 17.03
+sample_06   70    0.9604              SBS13: 38.92; SBS2: 21.21; SBS10b: 6.21
+sample_07   66    0.8859              SBS13: 15.04; SBS3: 8.31; SBS2: 7.25
+sample_08   52    0.9503              SBS2: 21.13; SBS13: 10.30; SBS30: 10.13
+sample_09   92    0.7674              SBS29: 49.07; SBS39: 13.91; SBS4: 7.69
+
+BIOLOGICAL INTERPRETATION
+-------------------------
+sample_01:
+SBS15 is associated with defective DNA mismatch repair.
+SBS1 is associated with spontaneous deamination of 5-methylcytosine.
+The dominant SBS15 exposure suggests a possible mismatch repair-related process.
+
+sample_02:
+SBS7a, SBS7b, and SBS7d are associated with ultraviolet (UV) damage.
+The profile is consistent with UV-associated mutagenesis.
+
+sample_03:
+SBS7a and SBS7b are dominant and indicate UV-associated mutagenesis.
+SBS31 is additionally assigned by the fitting procedure.
+
+sample_04:
+SBS4 is associated with tobacco smoking.
+SBS42 and SBS24 also appear in the fitted exposure profile.
+Interpretation of minor signatures requires caution.
+
+sample_05:
+SBS7b and SBS7a dominate the reconstructed mutational profile.
+The result suggests UV-associated mutagenesis.
+
+sample_06:
+SBS13 and SBS2 are associated with APOBEC cytidine deaminase activity.
+The result is consistent with an APOBEC-associated mutational process.
+
+sample_07:
+SBS13 and SBS2 suggest APOBEC activity.
+SBS3 is associated with homologous recombination repair deficiency,
+but this assignment alone is insufficient to establish HR deficiency.
+
+sample_08:
+SBS2 and SBS13 suggest APOBEC-associated mutagenesis.
+The relatively small number of mutations limits interpretation.
+
+sample_09:
+SBS29 is associated with chewing tobacco exposure in COSMIC.
+SBS4 is associated with tobacco smoking.
+However, this sample has the lowest cosine similarity (0.7674),
+so the biological interpretation is particularly uncertain.
+
+QUALITY CONTROL AND LIMITATIONS
+-------------------------------
+- All 1359 SNVs were assigned to SBS96 channels.
+- Reference bases were validated against GRCh37/hg19.
+- All nine samples had zero invalid trinucleotide contexts.
+- The fitting procedure used 60 COSMIC v3.2 SBS signatures.
+- The reconstructed mutation totals differ somewhat from observed totals.
+- High cosine similarity indicates a good reconstruction of the observed
+  SBS96 profile, not definitive identification of causal processes.
+- Fitting many reference signatures to samples with few mutations can
+  produce unstable or overfitted signature assignments.
+- In particular, sample_06, sample_07, sample_08, and sample_09
+  contain relatively few SNVs.
+- Signature assignments should be treated as hypotheses rather
+  than definitive biological diagnoses.
+
+CONCLUSION
+----------
+The nine samples show distinct fitted mutational signature patterns:
+
+- Samples 02, 03, and 05: predominantly UV-associated SBS7 signatures.
+- Samples 06, 07, and 08: APOBEC-associated SBS2/SBS13 signatures.
+- Sample 01: predominantly mismatch repair-associated SBS15.
+- Samples 04 and 09: fitted tobacco-associated signatures.
+
+These findings require cautious interpretation because signature fitting
+is sensitive to mutation burden, signature overlap, and model complexity.
+
+STATUS
+------
+SBS96 matrix: completed
+SBS96 plots: completed
+COSMIC v3.2 signature fitting: results generated
+Biological interpretation: documented
+Mutational signature simulation: pending
