@@ -33,19 +33,12 @@ The project was performed on the University of Bern UBELIX cluster. Absolute pat
 ### Variant results
 
 | Metric | Value |
-
 | --- | ---: |
-
 | Calls after Mutect2 filtering (all filter statuses) | 467 |
-
 | PASS variants | **133** |
-
 | PASS variants annotated by VEP | **133** |
-
 | Exact ClinVar allele matches | **10** |
-
 | Without a ClinVar match | 123 |
-
 | Variants with HIGH or MODERATE effect on at least one annotated transcript | **49** |
 
 Maximum VEP impact across annotated transcripts: **HIGH 10**, **MODERATE 39**, **LOW 26**, **MODIFIER 58** (sum = 133). ClinVar matches: **1 Pathogenic**, **2 Uncertain_significance**, **5 Likely_benign**, **2 Benign**.
@@ -75,19 +68,12 @@ The 49 HIGH/MODERATE variants represent predicted transcript effects, not 49 pro
 `submissions/21_bam_quality_control.sh` uses `samtools quickcheck`, `flagstat`, and `stats` on the **provided** `normal.recal.bam` and `tumor.recal.bam`.
 
 | Metric | Normal | Tumor |
-
 | --- | ---: | ---: |
-
 | Total alignment records | 12,744,793 | 16,674,562 |
-
 | Mapped | 99.43% | 99.45% |
-
 | Properly paired | 98.30% | 98.43% |
-
 | Duplicate alignments | 1,397,598 | 1,871,521 |
-
 | Duplicates as fraction of total alignment records | 10.97% | 11.22% |
-
 | Singletons | 0.58% | 0.55% |
 
 These mapping/pairing metrics are favorable, but they do not by themselves establish the validity of individual somatic calls. These are **not** the separate HCC1143 IGV-example BAM QC results.
@@ -107,25 +93,15 @@ Nine provided VCFs (`sample_01.vcf`–`sample_09.vcf`) were analyzed against **G
 - COSMIC **v3.2**, GRCh37 reference signatures were fitted using **MutationalPatterns 3.12.0**, R 4.3.2.
 
 | Sample | Leading fitted COSMIC SBS signature | Example association (hypothesis only) |
-
 | --- | --- | --- |
-
 | sample_01 | SBS15 | Mismatch repair deficiency |
-
 | sample_02 | SBS7b | UV-related damage |
-
 | sample_03 | SBS7a | UV-related damage |
-
 | sample_04 | SBS4 | Tobacco-associated exposure |
-
 | sample_05 | SBS7b | UV-related damage |
-
 | sample_06 | SBS13 | APOBEC activity |
-
 | sample_07 | SBS13 | APOBEC activity |
-
 | sample_08 | SBS2 | APOBEC activity |
-
 | sample_09 | SBS29 | Chewing-tobacco association in COSMIC |
 
 **Caution:** Some samples have relatively few SNVs; fitting a broad catalogue of signatures can be unstable or overfit. In particular, the fit cosine similarity for sample_09 was about **0.767**. Signature associations are not confirmed patient exposures or diagnoses. Full fit metrics and interpretation are recorded in `analysis_notes/12_cosmic_signature_interpretation.txt`.
@@ -135,15 +111,10 @@ Nine provided VCFs (`sample_01.vcf`–`sample_09.vcf`) were analyzed against **G
 Four controlled simulations mixed **SBS1** and **SBS7c**, placed substitutions at distinct positions in **hg19 chr12 exonic intervals** derived from the course-available GENCODE hg19 annotation, and fitted **only those two generating signatures**.
 
 | SNVs | Target SBS1 | Actual generated SBS1 | Inferred SBS1 | Absolute error versus generated fraction |
-
 | ---: | ---: | ---: | ---: | ---: |
-
 | 100 | 70% | 71.0% | 66.53% | 4.47 percentage points |
-
 | 500 | 70% | 71.4% | 72.22% | 0.82 percentage points |
-
 | 1,000 | 70% | 71.0% | 70.51% | 0.49 percentage points |
-
 | 500 | 50% | 49.0% | 48.84% | 0.16 percentage points |
 
 For this single realization per setting, the 70:30 mixture was more accurately recovered with increased mutation count. This is **not** a replicate-based statistical validation or a realistic model of all tumor signatures. See `analysis_notes/13_cosmic_simulation.txt`.
@@ -153,49 +124,27 @@ Main generated outputs are under `results/mutational_signatures/` on UBELIX and 
 ## SLURM submission scripts
 
 | Script | Purpose |
-
 | --- | --- |
-
 | `01_fastqc_normal.sh` | Normal read QC |
-
 | `02_fastqc_tumor.sh` | Tumor read QC |
-
 | `03_fastp.sh` | Read preprocessing |
-
 | `04_multiqc.sh` | QC aggregation |
-
 | `05_mutect2.sh` | Somatic variant calling on provided BAMs |
-
 | `06_filter_mutect_calls.sh` | Somatic call filtering |
-
 | `07_extract_pass_variants.sh` | Extract PASS variants |
-
 | `08_vep_annotation.sh` | VEP annotation |
-
 | `09_validate_hg19.sh` | Validate mutational-signature VCF REF alleles |
-
 | `10_build_sbs96.sh` | Create the SBS96 matrix |
-
 | `11_plot_sbs96.sh` | Plot SBS96 profiles |
-
 | `12_fit_cosmic_signatures.sh` | Fit COSMIC signatures |
-
 | `13_simulate_cosmic_signatures.sh` | Simulate and infer SBS1/SBS7c mixtures |
-
 | `14_clinvar_annotation.sh` | ClinVar GRCh38 exact-allele matching |
-
 | `15_prioritize_variants.sh` | Combine VEP and ClinVar annotations |
-
 | `16_bwa_alignment.sh` | Alignment exercise script (not rerun) |
-
 | `17_sort_index_bam.sh` | Sorting/indexing exercise script (not rerun) |
-
 | `18_mark_duplicates.sh` | Duplicate marking exercise script;  |
-
 | `19_base_recalibrator.sh` | BQSR recalibration exercise script;  |
-
 | `20_apply_bqsr.sh` | BQSR application exercise script (not rerun) |
-
 | `21_bam_quality_control.sh` | QC of course-provided recalibrated BAMs |
 
 **Note on numbering:** 16–20 were added after the main analysis as separate educational scripts, so the filename numbers do **not** represent their biological execution order. Within that educational mini-pipeline, the order is alignment → sorting → duplicate marking → BaseRecalibrator → ApplyBQSR. The actual somatic calling instead used the instructor-provided recalibrated BAMs.
