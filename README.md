@@ -191,3 +191,31 @@ Paths, module versions, external resources, and package availability must be ada
 - `analysis_notes/` — supplemental output interpretation and QC notes.
 
 Excluded on purpose: large FASTA files, BAMs, package caches, virtual environments, logs, downloaded course materials, and all large generated results. Those remain accessible only in the original course workspace.
+
+
+## Results visualizations
+
+### VEP impact distribution
+
+![VEP impact distribution](figures/vep_impact.svg)
+
+### VEP consequence distribution
+
+![Top VEP consequences](figures/vep_consequences.svg)
+
+Consequence counts can overlap across transcripts.
+
+### ClinVar clinical significance
+
+![ClinVar classifications](figures/clinvar_classifications.svg)
+
+Only 10 of 133 PASS variants matched ClinVar exactly.
+Unmatched variants are not necessarily benign.
+
+### COSMIC signature fitting quality
+
+![COSMIC cosine similarity](figures/cosmic_fit_similarity.svg)
+
+Cosine similarity measures agreement between observed and
+reconstructed SBS96 profiles; it does not independently prove
+the biological origin of a mutation signature.

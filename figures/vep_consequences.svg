@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="620" viewBox="0 0 920 620">
+<rect width="100%" height="100%" fill="white"/>
+<text x="35" y="45" font-size="23" font-weight="bold" font-family="Arial" fill="#172b4d">Top 10 VEP Consequence Categories</text>
+<text x="295" y="120" text-anchor="end" font-size="15" font-family="Arial" fill="#334155">intron_variant</text>
+<rect x="310" y="100" width="428.57" height="26" rx="4" fill="#2563eb"/>
+<text x="748.5714285714286" y="119" font-size="15" font-family="Arial" fill="#172b4d">86</text>
+<text x="295" y="162" text-anchor="end" font-size="15" font-family="Arial" fill="#334155">NMD_transcript_variant</text>
+<rect x="310" y="142" width="408.64" height="26" rx="4" fill="#2563eb"/>
+<text x="728.6378737541528" y="161" font-size="15" font-family="Arial" fill="#172b4d">82</text>
+<text x="295" y="204" text-anchor="end" font-size="15" font-family="Arial" fill="#334155">downstream_gene_variant</text>
+<rect x="310" y="184" width="264.12" height="26" rx="4" fill="#2563eb"/>
+<text x="584.1196013289036" y="203" font-size="15" font-family="Arial" fill="#172b4d">53</text>
+<text x="295" y="246" text-anchor="end" font-size="15" font-family="Arial" fill="#334155">upstream_gene_variant</text>
+<rect x="310" y="226" width="219.27" height="26" rx="4" fill="#2563eb"/>
+<text x="539.2691029900332" y="245" font-size="15" font-family="Arial" fill="#172b4d">44</text>
+<text x="295" y="288" text-anchor="end" font-size="15" font-family="Arial" fill="#334155">3_prime_UTR_variant</text>
+<rect x="310" y="268" width="214.29" height="26" rx="4" fill="#2563eb"/>
+<text x="534.2857142857142" y="287" font-size="15" font-family="Arial" fill="#172b4d">43</text>
+<text x="295" y="330" text-anchor="end" font-size="15" font-family="Arial" fill="#334155">non_coding_transcript_exon_variant</text>
+<rect x="310" y="310" width="204.32" height="26" rx="4" fill="#2563eb"/>
+<text x="524.3189368770763" y="329" font-size="15" font-family="Arial" fill="#172b4d">41</text>
+<text x="295" y="372" text-anchor="end" font-size="15" font-family="Arial" fill="#334155">non_coding_transcript_variant</text>
+<rect x="310" y="352" width="194.35" height="26" rx="4" fill="#2563eb"/>
+<text x="514.3521594684385" y="371" font-size="15" font-family="Arial" fill="#172b4d">39</text>
+<text x="295" y="414" text-anchor="end" font-size="15" font-family="Arial" fill="#334155">missense_variant</text>
+<rect x="310" y="394" width="184.39" height="26" rx="4" fill="#2563eb"/>
+<text x="504.3853820598007" y="413" font-size="15" font-family="Arial" fill="#172b4d">37</text>
+<text x="295" y="456" text-anchor="end" font-size="15" font-family="Arial" fill="#334155">synonymous_variant</text>
+<rect x="310" y="436" width="124.58" height="26" rx="4" fill="#2563eb"/>
+<text x="444.5847176079734" y="455" font-size="15" font-family="Arial" fill="#172b4d">25</text>
+<text x="295" y="498" text-anchor="end" font-size="15" font-family="Arial" fill="#334155">5_prime_UTR_variant</text>
+<rect x="310" y="478" width="39.87" height="26" rx="4" fill="#2563eb"/>
+<text x="359.86710963455147" y="497" font-size="15" font-family="Arial" fill="#172b4d">8</text>
+<text x="35" y="592" font-size="13" font-family="Arial" fill="#64748b">Categories overlap because each variant can affect multiple transcripts</text>
+</svg>

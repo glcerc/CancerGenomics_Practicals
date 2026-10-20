@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="578" viewBox="0 0 920 578">
+<rect width="100%" height="100%" fill="white"/>
+<text x="35" y="45" font-size="23" font-weight="bold" font-family="Arial" fill="#172b4d">COSMIC SBS96 Fit Cosine Similarity</text>
+<text x="295" y="120" text-anchor="end" font-size="15" font-family="Arial" fill="#334155">sample_01</text>
+<rect x="310" y="100" width="465.31" height="26" rx="4" fill="#2563eb"/>
+<text x="785.3080216356987" y="119" font-size="15" font-family="Arial" fill="#172b4d">0.969391711741039</text>
+<text x="295" y="162" text-anchor="end" font-size="15" font-family="Arial" fill="#334155">sample_02</text>
+<rect x="310" y="142" width="470.93" height="26" rx="4" fill="#2563eb"/>
+<text x="790.9281989215765" y="161" font-size="15" font-family="Arial" fill="#172b4d">0.981100414419951</text>
+<text x="295" y="204" text-anchor="end" font-size="15" font-family="Arial" fill="#334155">sample_03</text>
+<rect x="310" y="184" width="476.3" height="26" rx="4" fill="#2563eb"/>
+<text x="796.3023932400982" y="203" font-size="15" font-family="Arial" fill="#172b4d">0.992296652583538</text>
+<text x="295" y="246" text-anchor="end" font-size="15" font-family="Arial" fill="#334155">sample_04</text>
+<rect x="310" y="226" width="423.58" height="26" rx="4" fill="#2563eb"/>
+<text x="743.5794954007865" y="245" font-size="15" font-family="Arial" fill="#172b4d">0.882457282084972</text>
+<text x="295" y="288" text-anchor="end" font-size="15" font-family="Arial" fill="#334155">sample_05</text>
+<rect x="310" y="268" width="474.28" height="26" rx="4" fill="#2563eb"/>
+<text x="794.2792773198416" y="287" font-size="15" font-family="Arial" fill="#172b4d">0.98808182774967</text>
+<text x="295" y="330" text-anchor="end" font-size="15" font-family="Arial" fill="#334155">sample_06</text>
+<rect x="310" y="310" width="460.98" height="26" rx="4" fill="#2563eb"/>
+<text x="780.9824491226811" y="329" font-size="15" font-family="Arial" fill="#172b4d">0.960380102338919</text>
+<text x="295" y="372" text-anchor="end" font-size="15" font-family="Arial" fill="#334155">sample_07</text>
+<rect x="310" y="352" width="425.23" height="26" rx="4" fill="#2563eb"/>
+<text x="745.2257385561301" y="371" font-size="15" font-family="Arial" fill="#172b4d">0.885886955325271</text>
+<text x="295" y="414" text-anchor="end" font-size="15" font-family="Arial" fill="#334155">sample_08</text>
+<rect x="310" y="394" width="456.14" height="26" rx="4" fill="#2563eb"/>
+<text x="776.1388795059162" y="413" font-size="15" font-family="Arial" fill="#172b4d">0.950289332303992</text>
+<text x="295" y="456" text-anchor="end" font-size="15" font-family="Arial" fill="#334155">sample_09</text>
+<rect x="310" y="436" width="368.37" height="26" rx="4" fill="#2563eb"/>
+<text x="688.3711859501143" y="455" font-size="15" font-family="Arial" fill="#172b4d">0.767439970729405</text>
+<text x="35" y="550" font-size="13" font-family="Arial" fill="#64748b">Values closer to 1 indicate better reconstructed profile agreement</text>
+</svg>
