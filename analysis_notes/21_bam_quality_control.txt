@@ -1,0 +1,58 @@
+BAM QUALITY CONTROL - PROVIDED RECALIBRATED BAM FILES
+=====================================================
+
+Samples:
+normal.recal.bam
+tumor.recal.bam
+
+Source:
+/data/courses/cancergenomics/VAR_CALLING/alignments/
+
+Tool:
+SAMtools 1.13
+
+NORMAL SAMPLE
+-------------
+Total alignment records: 12,744,793
+Primary alignments: 12,733,034
+Mapped: 99.43%
+Properly paired: 98.30%
+Duplicate alignments: 1,397,598
+Duplicate percentage of total records: 10.97%
+Singletons: 0.58%
+
+TUMOR SAMPLE
+------------
+Total alignment records: 16,674,562
+Primary alignments: 16,663,310
+Mapped: 99.45%
+Properly paired: 98.43%
+Duplicate alignments: 1,871,521
+Duplicate percentage of total records: 11.22%
+Singletons: 0.55%
+
+INTERPRETATION
+--------------
+Both samples show high mapping rates and properly paired
+read percentages.
+
+Duplicate alignment fractions are approximately 11%
+for both samples.
+
+These results support good alignment and pairing quality,
+but do not independently validate individual somatic calls.
+
+IMPORTANT
+---------
+These metrics were calculated from the course-provided,
+pre-aligned and recalibrated BAM files.
+
+The alignment and BQSR scripts prepared separately
+were not executed to regenerate these BAM files.
+
+OUTPUTS
+-------
+results/bam_qc/normal_flagstat.txt
+results/bam_qc/tumor_flagstat.txt
+results/bam_qc/normal_stats.txt
+results/bam_qc/tumor_stats.txt
