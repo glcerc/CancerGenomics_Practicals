@@ -65,7 +65,7 @@ The 49 HIGH/MODERATE variants represent predicted transcript effects, not 49 pro
 
 ## 2. BAM quality control
 
-`submissions/21_bam_quality_control.sh` uses `samtools quickcheck`, `flagstat`, and `stats` on the **provided** `normal.recal.bam` and `tumor.recal.bam`.
+`submissions/10_bam_quality_control.sh` uses `samtools quickcheck`, `flagstat`, and `stats` on the **provided** `normal.recal.bam` and `tumor.recal.bam`.
 
 | Metric | Normal | Tumor |
 | --- | ---: | ---: |
@@ -129,25 +129,25 @@ Main generated outputs are under `results/mutational_signatures/` on UBELIX and 
 | `02_fastqc_tumor.sh` | Tumor read QC |
 | `03_fastp.sh` | Read preprocessing |
 | `04_multiqc.sh` | QC aggregation |
-| `05_mutect2.sh` | Somatic variant calling on provided BAMs |
-| `06_filter_mutect_calls.sh` | Somatic call filtering |
-| `07_extract_pass_variants.sh` | Extract PASS variants |
-| `08_vep_annotation.sh` | VEP annotation |
-| `09_validate_hg19.sh` | Validate mutational-signature VCF REF alleles |
-| `10_build_sbs96.sh` | Create the SBS96 matrix |
-| `11_plot_sbs96.sh` | Plot SBS96 profiles |
-| `12_fit_cosmic_signatures.sh` | Fit COSMIC signatures |
-| `13_simulate_cosmic_signatures.sh` | Simulate and infer SBS1/SBS7c mixtures |
-| `14_clinvar_annotation.sh` | ClinVar GRCh38 exact-allele matching |
-| `15_prioritize_variants.sh` | Combine VEP and ClinVar annotations |
-| `16_bwa_alignment.sh` | Alignment exercise script (not rerun) |
-| `17_sort_index_bam.sh` | Sorting/indexing exercise script (not rerun) |
-| `18_mark_duplicates.sh` | Duplicate marking exercise script;  |
-| `19_base_recalibrator.sh` | BQSR recalibration exercise script;  |
-| `20_apply_bqsr.sh` | BQSR application exercise script (not rerun) |
-| `21_bam_quality_control.sh` | QC of course-provided recalibrated BAMs |
+| `11_mutect2.sh` | Somatic variant calling on provided BAMs |
+| `12_filter_mutect_calls.sh` | Somatic call filtering |
+| `13_extract_pass_variants.sh` | Extract PASS variants |
+| `14_vep_annotation.sh` | VEP annotation |
+| `17_validate_hg19.sh` | Validate mutational-signature VCF REF alleles |
+| `18_build_sbs96.sh` | Create the SBS96 matrix |
+| `19_plot_sbs96.sh` | Plot SBS96 profiles |
+| `20_fit_cosmic_signatures.sh` | Fit COSMIC signatures |
+| `21_simulate_cosmic_signatures.sh` | Simulate and infer SBS1/SBS7c mixtures |
+| `15_clinvar_annotation.sh` | ClinVar GRCh38 exact-allele matching |
+| `16_prioritize_variants.sh` | Combine VEP and ClinVar annotations |
+| `05_bwa_alignment.sh` | Alignment exercise script (not rerun) |
+| `06_sort_index_bam.sh` | Sorting/indexing exercise script (not rerun) |
+| `07_mark_duplicates.sh` | Duplicate marking exercise script;  |
+| `08_base_recalibrator.sh` | BQSR recalibration exercise script;  |
+| `09_apply_bqsr.sh` | BQSR application exercise script (not rerun) |
+| `10_bam_quality_control.sh` | QC of course-provided recalibrated BAMs |
 
-**Note on numbering:** 16–20 were added after the main analysis as separate educational scripts, so the filename numbers do **not** represent their biological execution order. Within that educational mini-pipeline, the order is alignment → sorting → duplicate marking → BaseRecalibrator → ApplyBQSR. The actual somatic calling instead used the instructor-provided recalibrated BAMs.
+**Note on numbering:** Scripts 05–09 document the alignment/BQSR educational workflow; the actual downstream Mutect2 analysis used the course-provided recalibrated BAMs. These educational scripts were not all executed successfully.
 
 Supporting scripts live in `scripts/`. The package includes these dependencies rather than providing nonfunctional SLURM wrappers alone. `scripts/setup/` contains optional environment-installation and troubleshooting utilities; it is not required for a source-code review of the analyses.
 
@@ -157,7 +157,7 @@ Supporting scripts live in `scripts/`. The package includes these dependencies r
 
 2. Review the hard-coded paths in the scripts. Set up the VEP environment and MutationalPatterns dependencies if they are not already available. Prepare/index `references/hg19.fa` using `scripts/09_prepare_hg19.sh` when running SBS96 work.
 
-3. Submit the appropriate numbered script with, for example, `sbatch submissions/10_build_sbs96.sh`, after its input files and prerequisites are ready. Do not submit the BWA/BQSR mini-pipeline as though it were necessary for reproducing Mutect2: the executed downstream workflow uses the course-provided BAMs.
+3. Submit the appropriate numbered script with, for example, `sbatch submissions/18_build_sbs96.sh`, after its input files and prerequisites are ready. Do not submit the BWA/BQSR mini-pipeline as though it were necessary for reproducing Mutect2: the executed downstream workflow uses the course-provided BAMs.
 
 4. Review results in `results/` and interpret them with the corresponding `analysis_notes/` files.
 
