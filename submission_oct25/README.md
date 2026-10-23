@@ -1,6 +1,6 @@
 # Cancer Genomics Practical 1 — Somatic Variant Calling
 
-**University of Bern · Cancer Genomics, Autumn Semester 2026 · UBELIX / IBU cluster**
+**University of Bern · Cancer Genomics, Autumn Semester 2026**
 
 ## Group members
 
@@ -16,20 +16,6 @@ pre-processing, BAM QC, somatic variant calling with GATK Mutect2 and filtering 
 **Data:** whole-exome sequencing of the triple-negative breast cancer cell line HCC1395 (tumor) and the
 matched normal HCC1395 BL, subset to chromosomes 6 and 17 (GRCh38), provided under
 `/data/courses/cancergenomics/VAR_CALLING/`.
-
-## How to run
-
-1. Create a log folder in the directory you submit from: `mkdir -p logs`.
-2. Outputs are written to `$PROJECT/results/`. `PROJECT` defaults to
-   `/data/users/$USER/CancerGenomics_Practicals`; to use another location, run
-   `export PROJECT=/path/to/project` before submitting.
-3. Submit the scripts in numerical order, each after its input exists, e.g. `sbatch 01_fastqc_normal.sh`.
-4. Course input data are read from `/data/courses/cancergenomics/` (read-only).
-
-All scripts are SLURM batch scripts with the course header (partition `pibu_el8`, account
-`class-407009-ws-2026`, job name, memory, time). The course `--reservation` line is kept but commented
-out (`##SBATCH`): the session reservations (`class-407009-2026-10-08` / `-10-15`) have expired and SLURM
-now rejects jobs that request them ("Requested reservation is invalid").
 
 ## Scripts
 
@@ -89,8 +75,7 @@ points; MarkDuplicates reports 10.61% / 10.80%). Our BAMs are fully mapped, like
 aligned to the whole genome, whereas the course BAMs use a chr6/chr17 reference on which reads from
 other chromosomes remain unmapped. The course BAMs contain ~4–5% more records, presumably because they were
 generated from the original read set rather than from the extracted FASTQs. As instructed in the course,
-downstream variant calling (12–15) uses the course-provided recalibrated BAMs so that all groups work
-with standardised files.
+downstream variant calling (12–15) uses the course-provided recalibrated BAMs.
 
 ### Capture metrics of the course BAMs (11)
 
@@ -132,24 +117,36 @@ tumor allele fraction), normal_artifact + strand_bias (26) and panel_of_normals 
 strand_bias (alt reads from one strand only), all typical signatures of technical artifacts or residual
 germline variation.
 
-## Issues encountered and alternative handling
+## Failed steps, warnings and alternative handling
 
-- **Course-provided BAMs for calling.** Our alignment → BQSR scripts (05–09) were run to validate the
-  pre-processing workflow; as instructed in the course, variant calling used the course-provided
-  recalibrated BAMs.
-- **BaseRecalibrator restricted to chr6/chr17 (`-L chr6 -L chr17`).** The course reads originate from
-  chromosomes 6 and 17 only, so the recalibration model was built on these chromosomes to avoid scanning
-  the rest of the genome (~40 min for both samples). ApplyBQSR is applied to the whole BAM.
-- **Two references.** Alignment/BQSR use the course bwa-mem2 index (`bwa_idx/genome.fa`, full GRCh38);
-  Mutect2/FilterMutectCalls use `reference/ref_genome.fa` (chr6 and chr17), matching the course BAMs.
-  Chromosome lengths are identical in both.
-- **Intermediate files.** Steps 06, 07 and 09 delete the previous BAM only after `samtools quickcheck`
-  confirms the new one, to limit disk usage.
-- **Warnings (non-critical).** GATK 4.2.6.1 reports that its Java 11 support is "in beta" and logs
-  `IntelInflater - Zero Bytes Written` (benign decompression message). BaseRecalibrator (08) warns that the
-  course dbSNP index is older than the VCF and that the VCF has no sequence dictionary (taken from the
-  index instead). Mutect2 (12) warns that the course BAM index files are older than the BAMs. All concern
-  timestamps or metadata of course-provided files, which were not modified; all jobs completed normally.
-- **Reservation line.** Kept commented out in every script (see "How to run").
-- **Portable paths.** Scripts use `PROJECT="${PROJECT:-/data/users/$USER/CancerGenomics_Practicals}"`
-  so any group member can run them without editing.
+### Failed steps
+
+None. All submitted scripts completed successfully.
+
+### Warnings
+
+All warnings were non-critical and did not affect the results:
+
+- **All GATK steps (07, 08, 09, 11, 12, 13):** "GATK v4.2.6.1 support for Java 11 is in beta" and
+  `IntelInflater - Zero Bytes Written`. These are standard messages of the cluster's GATK module.
+- **08 BaseRecalibrator:** the course dbSNP index file is older than the dbSNP VCF, and the VCF has no
+  sequence dictionary (GATK reads it from the index instead).
+- **12 Mutect2:** the course BAM index files are older than the BAM files.
+- **01–02 FastQC:** "Per sequence GC content" and "Sequence length distribution" (explained in the
+  Read QC results above).
+
+The index warnings only concern file timestamps or metadata of course-provided files, which we did not modify.
+
+### Alternative handling
+
+- **Course-provided BAMs for variant calling.** As instructed in the course slides, Mutect2 (12) uses
+  the recalibrated BAMs provided by the course. Our own alignment and BQSR scripts (05–09) were run
+  to show that the pre-processing works; their results are compared with the course BAMs above.
+- **BaseRecalibrator only on chr6 and chr17.** Our reads come only from chromosomes 6 and 17, so
+  step 08 uses `-L chr6 -L chr17` instead of scanning the whole genome. ApplyBQSR (09) is still
+  applied to all reads.
+- **Two reference files.** Alignment and BQSR (05–09) use the course bwa-mem2 reference (full GRCh38);
+  Mutect2 and FilterMutectCalls (12–13) use the chr6/chr17 reference that matches the course BAMs.
+- **Reservation line.** The course template includes `--reservation`, but the session reservations
+  have expired and SLURM rejects jobs that request them. The line is therefore kept commented out
+  (`##SBATCH`) in every script.
